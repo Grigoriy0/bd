@@ -1,0 +1,13 @@
+version: "3.0"
+
+services:
+  db:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql-dump:/var/lib/mysql
+      - ./webapp.sql:/opt/webapp.sql
+    env_file:
+      - .env
